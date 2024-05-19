@@ -18,7 +18,7 @@ x, y = 1, 1
 # L, R, U, D에 따른 이동 방향
 move_types = ['L', 'R', 'U', 'D']
 dx = [0, 0, -1, 1]
-dx = [-1, 1, 0, 0]
+dy = [-1, 1, 0, 0]
 
 for plan in plans:
     # 다음 좌표 구하기
@@ -29,8 +29,7 @@ for plan in plans:
 
     if nx > 5 or ny > 5 or nx < 1 or ny < 1:
         continue
-    
-    x, y = nx,  ny
+
+    x, y = nx, ny
 
 print(x, y)
-
