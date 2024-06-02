@@ -1,6 +1,5 @@
 '''
 [1이 될 때까지]
-
 어떠한 수 N이 1이 될 때까지 다음의 두 과정 중 하나를 반복적으로 선택하여 수행하려고 합니다.
 단, 두번째 연산은 N이 K로 나누어 떨어질 때만 선택할 수 있습니다.
 
@@ -17,14 +16,17 @@ n, k = map(int, input().split())
 result = 0
 
 while True:
-    if n % k == 0:
-        result += 1
-        break
-    else:
-        n -= 1
-        result += 1
+    k_multiple = (n // k) * k  # n이 k로 나누어 떨어지는 수 중 가장 가까운 수
+    result += n - k_multiple  # 먼저 1번 과정을 수행
+    n = k_multiple  # 1번 과정을 수행한 후의 n(무조건 k로 나누어 떨어짐)
 
-    if n == 1:
+    if n < k:
         break
 
+    result += 1
+    n //= k
+
+result += (n - 1)  # 마지막으로 남은 수에 대하여 1번 과정을 수행
 print(result)
+
+# n 이 반복될때마다 k로 나누는 작업이 이루어지므로 시간 복잡도는 O(logN)이다.
